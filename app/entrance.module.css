@@ -1,0 +1,61 @@
+.entrance {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
+  overflow: hidden;
+  padding: max(24px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));
+  color: #fff;
+}
+
+.enter {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 224px;
+  min-height: 76px;
+  padding: 20px 36px;
+  color: #fff;
+  font-size: clamp(18px, 1.5vw, 22px);
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: .32em;
+  text-indent: .32em;
+  text-shadow: 0 1px 8px rgb(0 0 0 / 45%);
+  text-decoration: underline transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .45em;
+  transition: opacity 400ms ease, text-decoration-color 160ms ease;
+}
+
+.enter[data-leaving="true"] { opacity: 0; pointer-events: none; }
+
+.enter::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -12px -24px;
+  /* Soft local contrast keeps the footage bright without a visible button box. */
+  background: radial-gradient(ellipse, rgb(0 0 0 / 64%) 0% 45%, transparent 75%);
+  pointer-events: none;
+}
+
+.enter:hover,
+.enter:focus-visible {
+  text-decoration-color: currentColor;
+}
+
+.enter:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .enter { transition: none; }
+}
